@@ -4,12 +4,6 @@ import { galleryItems } from "./gallery-items.js";
 const galleryAlbum = document.querySelector(".gallery");
 galleryAlbum.addEventListener("click", openGalleryItem);
 
-//? Открывает модальное окно с картинкой по клику (большой, оригинальной)
-function openGalleryItem(event) {
-  event.preventDefault();
-  console.log(event.target);
-}
-
 //? Добавляет картинки из объекта в разметку
 function addItemToGallery() {
   for (const item of galleryItems) {
@@ -28,3 +22,18 @@ function addItemToGallery() {
   }
 }
 addItemToGallery();
+
+//? Открывает модальное окно с картинкой по клику (большой, оригинальной)
+function openGalleryItem(event) {
+  const imageItem = document.querySelector(".gallery__image");
+  event.preventDefault();
+  //   console.log(event.target);
+  //   console.log(document.querySelector("[data-source]"));
+  console.log(imageItem.dataset.source);
+}
+
+//? Створення і рендер розмітки на підставі масиву даних galleryItems і наданого шаблону елемента галереї.
+//? Реалізація делегування на div.gallery і отримання url великого зображення.
+//? Підключення скрипту і стилів бібліотеки модального вікна basicLightbox. Використовуй CDN сервіс jsdelivr і додай у проект посилання на мініфіковані (.min) файли бібліотеки.
+//? Відкриття модального вікна по кліку на елементі галереї. Для цього ознайомся з документацією і прикладами.
+//? Заміна значення атрибута src елемента <img> в модальному вікні перед відкриттям. Використовуй готову розмітку модального вікна із зображенням з прикладів бібліотеки basicLightbox.
