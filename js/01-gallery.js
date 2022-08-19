@@ -6,6 +6,7 @@ galleryAlbum.addEventListener("click", openGalleryItem);
 
 //? Открывает модальное окно с картинкой по клику (большой, оригинальной)
 function openGalleryItem(event) {
+  event.preventDefault();
   console.log(event.target);
 }
 
@@ -14,7 +15,15 @@ function addItemToGallery() {
   for (const item of galleryItems) {
     galleryAlbum.insertAdjacentHTML(
       "afterbegin",
-      `<img src="${item.preview}" alt="${item.description}" >`
+      `<div class="gallery__item">
+        <a class="gallery__link" href="${item.original}">
+            <img
+                class="gallery__image"
+                src="${item.preview}"
+                data-source="${item.original}"
+                alt="${item.description}"/>
+        </a>
+    </div>`
     );
   }
 }
