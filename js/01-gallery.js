@@ -1,5 +1,5 @@
 import { galleryItems } from "./gallery-items.js";
-// console.log(galleryItems);
+//* console.log(galleryItems);
 
 const galleryAlbum = document.querySelector(".gallery");
 galleryAlbum.addEventListener("click", openGalleryItem);
@@ -19,11 +19,11 @@ function addItemToGallery({ preview, original, description }) {
 
 // Делаем один бойльшой файл разметки
 let addNewImage = galleryItems.map(addItemToGallery).join("");
-// console.log(addNewImage);
+//* console.log(addNewImage);
 
 // Вставляет в разметку разметку картинки
 galleryAlbum.insertAdjacentHTML("afterbegin", addNewImage);
-// console.log(galleryAlbum);
+//* console.log(galleryAlbum);
 
 // Открывает модальное окно с картинкой по клику (большой, оригинальной)
 function openGalleryItem(event) {
@@ -31,8 +31,9 @@ function openGalleryItem(event) {
   event.preventDefault();
   // Достукиваемся до дата-атрибута по клику!
   const imageSrc = event.target.dataset.source;
-  // console.log(imageSrc);
-  // console.log(event.target);
+  //* console.log(imageSrc);
+  //* console.log(event.target);
+  // Приплетаем сторонюю библиотеку
   basicLightbox
     .create(
       `
