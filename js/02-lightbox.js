@@ -30,19 +30,9 @@ function openGalleryItem(event) {
   const imageSrc = event.target.dataset.source;
   //* console.log(imageSrc);
   //* console.log(event.target);
-  // Приплетаем сторонюю библиотеку
-  basicLightbox
-    .create(
-      `
-		<img src="${imageSrc}">
-	`
-    )
-    .show();
 }
 
-var lightbox = new SimpleLightbox(".gallery a", {
-  /* options */
-});
+var lightbox = new SimpleLightbox(".gallery a", {});
 
 //! Створення і рендер розмітки на підставі масиву даних galleryItems і наданого шаблону елемента галереї. Використовуй готовий код з першого завдання.
 //! Підключення скрипту і стилів бібліотеки, використовуючи CDN сервіс cdnjs. Необхідно додати посилання на два файли: simple-lightbox.min.js і simple-lightbox.min.css.
