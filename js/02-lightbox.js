@@ -1,25 +1,17 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-console.log(galleryItems);
-
-var lightbox = new SimpleLightbox(".gallery a", {
-  /* options */
-});
+// console.log(galleryItems);
 
 const galleryAlbum = document.querySelector(".gallery");
 galleryAlbum.addEventListener("click", openGalleryItem);
 
 // Добавляет картинки из объекта в разметку
 function addItemToGallery({ preview, original, description }) {
-  return `<div class="gallery__item">
-        <a class="gallery__link" href="${original}">
-            <img
-                class="gallery__image"
-                src="${preview}"
-                data-source="${original}"
-                alt="${description}"/>
-        </a>
-    </div>`;
+  return `<a class="gallery__item" href="${original}">
+            <img class="gallery__image" 
+            src="${preview}"
+            alt="${description}" />
+        </a>`;
 }
 
 // Делаем один бойльшой файл разметки
@@ -30,7 +22,29 @@ let addNewImage = galleryItems.map(addItemToGallery).join("");
 galleryAlbum.insertAdjacentHTML("afterbegin", addNewImage);
 //* console.log(galleryAlbum);
 
-//TODO Створення і рендер розмітки на підставі масиву даних galleryItems і наданого шаблону елемента галереї. Використовуй готовий код з першого завдання.
-//TODO Підключення скрипту і стилів бібліотеки, використовуючи CDN сервіс cdnjs. Необхідно додати посилання на два файли: simple-lightbox.min.js і simple-lightbox.min.css.
+// Открывает модальное окно с картинкой по клику (большой, оригинальной)
+function openGalleryItem(event) {
+  // Запрещает все стандартные события
+  event.preventDefault();
+  // Достукиваемся до дата-атрибута по клику
+  const imageSrc = event.target.dataset.source;
+  //* console.log(imageSrc);
+  //* console.log(event.target);
+  // Приплетаем сторонюю библиотеку
+  basicLightbox
+    .create(
+      `
+		<img src="${imageSrc}">
+	`
+    )
+    .show();
+}
+
+var lightbox = new SimpleLightbox(".gallery a", {
+  /* options */
+});
+
+//! Створення і рендер розмітки на підставі масиву даних galleryItems і наданого шаблону елемента галереї. Використовуй готовий код з першого завдання.
+//! Підключення скрипту і стилів бібліотеки, використовуючи CDN сервіс cdnjs. Необхідно додати посилання на два файли: simple-lightbox.min.js і simple-lightbox.min.css.
 //TODO Ініціалізація бібліотеки після створення і додання елементів галереї у div.gallery. Для цього ознайомся з документацією SimpleLightbox - насамперед секції «Usage» і «Markup».
 //TODO Подивися в документації секцію «Options» і додай відображення підписів до зображень з атрибута alt. Нехай підпис буде знизу і з'являється через 250 мілісекунд після відкриття зображення.
