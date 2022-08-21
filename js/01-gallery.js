@@ -26,6 +26,7 @@ galleryAlbum.insertAdjacentHTML("afterbegin", addNewImage);
 //* console.log(galleryAlbum);
 
 // Открывает модальное окно с картинкой по клику (большой, оригинальной)
+
 function openGalleryItem(event) {
   // Запрещает все стандартные события
   event.preventDefault();
@@ -34,11 +35,17 @@ function openGalleryItem(event) {
   //* console.log(imageSrc);
   //* console.log(event.target);
   // Приплетаем сторонюю библиотеку
-  basicLightbox
-    .create(
-      `
+  const instance = basicLightbox.create(`
 		<img src="${imageSrc}">
-	`
-    )
-    .show();
+	`);
+
+  instance.show();
+
+  window.addEventListener("keydown", escapeFromImage);
+  function escapeFromImage(e) {
+    if (e.code !== "Escape") {
+      return;
+    }
+    instance.close();
+  }
 }
