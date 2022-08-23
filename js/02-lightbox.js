@@ -24,7 +24,6 @@ galleryAlbum.insertAdjacentHTML("afterbegin", addNewImage);
 
 // Открывает модальное окно с картинкой по клику (большой, оригинальной)
 function openGalleryItem(event) {
-  // Запрещает все стандартные события
   event.preventDefault();
   // Достукиваемся до дата-атрибута по клику
   const imageSrc = event.target.dataset.source;
